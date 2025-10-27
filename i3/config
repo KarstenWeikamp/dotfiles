@@ -189,8 +189,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 #bar {
 #        status_command i3status -c ~/.config/i3status/conf
-#}
-
+#
 
 #Autostart
 #workspace selection
@@ -198,6 +197,7 @@ exec --no-startup-id "compton -b --config ~/.config/compton.conf"
 exec --no-startup-id dunst
 exec --no-startup-id ~/.config/i3/screenconfig.sh
 exec --no-startup-id nm-applet --indicator
+exec --no-startup-id blueman-applet
 # Add SSH key to identity manager
 exec fix-ssh-agent
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
@@ -206,3 +206,4 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 bindsym Control+Mod1+l exec xfce4-screenshooter -f -s lock.png && convert lock.png -channel RGBA -blur 0x4 lock.png && i3lock -i lock.png
 # Flameshot is a simple program for taking screenshots
 exec --no-startup-id flameshot
+exec --no-startup-id zulip-desktop

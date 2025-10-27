@@ -15,7 +15,8 @@ selected_scripts=$(rofi -dmenu -multi-select -p "Select Workspace:" \
 
 # kill all running polybar instances
 killall -q polybar
-
+# Wait until the processes have been shut down
+while pgrep -x polybar >/dev/null; do sleep 1; done
 # Run the selected scripts
 for script_index in $selected_scripts; do
 	echo "Starting Workspace: ${scripts[$script_index+1]}"

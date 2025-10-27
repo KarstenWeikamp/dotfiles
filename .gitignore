@@ -1,0 +1,21 @@
+*    
+
+!*/
+    
+
+# track this file
+    
+
+!.gitignore
+    
+
+# whitelist
+
+!dunst/
+!i3/
+!i3status/
+!nvim/
+!polybar/
+!rofi/
+!compton.conf
+!SEGGERJLinkGDBServerSettings.ini

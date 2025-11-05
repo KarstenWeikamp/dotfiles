@@ -32,13 +32,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- Enable language servers with auto-discovery
-vim.lsp.enable({
-  "clangd",
-  "pyright",
-  "rust_analyzer",
-  "yamlls",
-  "jsonls",
-  "taplo",
-})
-

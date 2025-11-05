@@ -1,14 +1,23 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
+-- Load VSCode-format snippet collections
+require("luasnip.loaders.from_vscode").lazy_load()
+
 cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
+
   mapping = cmp.mapping.preset.insert({
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
+
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -18,6 +27,7 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
+
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -28,11 +38,30 @@ cmp.setup({
       end
     end, { "i", "s" }),
   }),
+
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "path" },
     { name = "buffer" },
   }),
+
+  formatting = {
+    fields = { "abbr", "kind", "menu" },
+    format = function(_, item)
+      local menu = {
+        nvim_lsp = "[LSP]",
+        luasnip  = "[Snip]",
+        buffer   = "[Buf]",
+        path     = "[Path]",
+      }
+      item.menu = menu[item.source.name]
+      return item
+    end,
+  },
+
+  completion = {
+    completeopt = "menu,menuone,noinsert",
+  },
 })
 

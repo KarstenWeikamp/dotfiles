@@ -40,10 +40,3 @@ vim.opt.listchars = {
 }
      
 
--- Keymaps
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>", { silent = true })
-

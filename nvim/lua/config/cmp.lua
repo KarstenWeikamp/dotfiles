@@ -48,14 +48,14 @@ cmp.setup({
 
   formatting = {
     fields = { "abbr", "kind", "menu" },
-    format = function(_, item)
+    format = function(entry, item)  -- Changed _ to entry
       local menu = {
         nvim_lsp = "[LSP]",
         luasnip  = "[Snip]",
         buffer   = "[Buf]",
         path     = "[Path]",
       }
-      item.menu = menu[item.source.name]
+      item.menu = menu[entry.source.name] or ""  -- Use entry.source.name and add fallback
       return item
     end,
   },

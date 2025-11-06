@@ -3,11 +3,60 @@ return {
     { "nvim-lua/plenary.nvim", lazy = true },
 
     -- UI
-    { "nvim-tree/nvim-tree.lua", config = true },
     { "nvim-tree/nvim-web-devicons", lazy = true },
     { "nvim-lualine/lualine.nvim", config = true },
-    { "nvim-telescope/telescope.nvim", tag = "0.1.6", dependencies = { "nvim-lua/plenary.nvim" } },
-
+    {
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.6",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        keys = {
+            {
+                "<leader>ff",
+                function()
+                    require("telescope.builtin").find_files()
+                end,
+                desc = "Search for files (respecting .gitignore)",
+            },
+            {
+                "<leader>fg",
+                function()
+                    require("telescope.builtin").live_grep()
+                end,
+                desc = "Search for a string and get results live as you type, respects .gitignore",
+            },
+            {
+                "<leader>fts",
+                function()
+                    require("telescope.builtin").treesitter()
+                end,
+                desc = "Lists function names, variables, and other symbols from treesitter queries"
+            },
+            {
+                "<leader>fb",
+                function()
+                    require("telescope.builtin").buffers()
+                end,
+                desc = "List open buffers",
+            },
+            {
+                "<leader>fh",
+                function()
+                    require("telescope.builtin").help_tags()
+                end,
+                desc = "Lists available help tags and opens a new window with the relevant help info"
+            }
+        },
+    },
+    { 
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        lazy = false,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "nvim-tree/nvim-web-devicons",
+        },
+    },
     -- Syntax Highlighter
     {
         "nvim-treesitter/nvim-treesitter",
@@ -80,6 +129,7 @@ return {
      -- Git
     {
         "lewis6991/gitsigns.nvim",
+        lazy = false,
         config = function()
             require("config.git")
         end,
@@ -118,6 +168,7 @@ return {
         "NeogitOrg/neogit",
         dependencies = "nvim-lua/plenary.nvim",
         config = true,
+        lazy = false,
         keys = {
             {
                 "<leader>gco",

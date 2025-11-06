@@ -1,13 +1,13 @@
-*    
+*
 
 !*/
-    
+
 
 # track this file
-    
+
 
 !.gitignore
-    
+
 
 # whitelist
 
@@ -15,6 +15,7 @@
 !i3/
 !i3status/
 !nvim/
+!nvim/lua/overseer/*
 !polybar/
 !rofi/
 !compton.conf

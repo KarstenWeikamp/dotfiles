@@ -15,8 +15,11 @@
 !i3/
 !i3status/
 !nvim/
+!nvim/**
 !nvim/lua/overseer/*
 !polybar/
 !rofi/
 !compton.conf
-!SEGGERJLinkGDBServerSettings.ini
+
+# do not store lazy-lock
+nvim/lazy-lock.json
